@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Código fuente</title>
+    <style>
+        body { font-family: Arial; background: #f0f2f5; padding: 20px; }
+        .container { background: white; border-radius: 10px; padding: 25px; max-width: 700px; margin: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #1a1a1a; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th { background: #f8f9fa; padding: 12px; text-align: left; border: 1px solid #dee2e6; }
+        td { padding: 12px; border: 1px solid #dee2e6; }
+        .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
+        .green { background: #28a745; }
+        .red { background: #dc3545; }
+        .yellow { background: #ffc107; }
+        .checkbox-group { margin: 15px 0; }
+        .checkbox-item { display: flex; align-items: center; margin: 8px 0; }
+        input[type="checkbox"] { margin-right: 10px; }
+        .badge { background: #007bff; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px; margin-left: 10px; }
+        .badge-gray { background: #6c757d; }
+        .btn-group { display: flex; gap: 10px; margin-top: 10px; margin-left: 25px; }
+        .btn { background: #007bff; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; display: flex; align-items: center; }
+        .btn:before { content: "✓ "; margin-right: 5px; }
+        hr { border: none; height: 1px; background: #dee2e6; margin: 25px 0; }
+        .repo { background: #f8f9fa; padding: 15px; border-radius: 5px; font-weight: bold; font-size: 16px; border: 1px solid #dee2e6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Código fuente</h1>
+        
+        <table>
+            <tr><th>Proveedor Git</th><th>Repositorio Git Público</th><th>Imagen existente</th></tr>
+            <tr><td>GitHub</td><td><span class="dot green"></span>Conectado</td><td><span class="dot green"></span>Disponible</td></tr>
+            <tr><td>GitLab</td><td><span class="dot red"></span>No configurado</td><td><span class="dot red"></span>No disponible</td></tr>
+            <tr><td>Bitbucket</td><td><span class="dot yellow"></span>Pendiente</td><td><span class="dot green"></span>Disponible</td></tr>
+        </table>
+        
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <input type="checkbox"> Buscar repositorios
+                <div style="margin-left: 15px;">
+                    <input type="checkbox" checked> <span class="badge">Nuevo</span>
+                </div>
+            </div>
+            
+            <div class="checkbox-item">
+                <input type="checkbox"> Credenciales
+                <div style="margin-left: 15px;">
+                    <input type="checkbox" checked> <span class="badge badge-gray">1</span>
+                </div>
+            </div>
+            
+            <div class="checkbox-item">
+                <input type="checkbox"> Guardar cambios
+            </div>
+            
+            <div class="btn-group">
+                <button class="btn">Sincronizar ahora</button>
+                <button class="btn">Configuración avanzada</button>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <div class="repo">
+            aanzulesb2-ship-it / rectificadora-app
+        </div>
+    </div>
+</body>
+</html>

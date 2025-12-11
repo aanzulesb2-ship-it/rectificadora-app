@@ -1,65 +1,120 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rectificadora Suarez</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg,#ffdee9,#b5fffc);
-            text-align: center;
-        }
-        #splash {
-            padding: 50px 20px;
-        }
-        #splash .logo {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
-        #gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px auto;
-            max-width: 900px;
-        }
-        #chat-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #00bfa5;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        #chat-btn:hover {
-            background: #009e8f;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grupo Rectificadora Suárez</title>
+  
+  <!-- Meta SEO -->
+  <meta name="description" content="Rectificadora Suarez - Servicio de rectificado de motores, galería y contacto.">
+  <meta name="keywords" content="rectificadora, motores, rectificado, galería, Ecuador">
+  <meta name="author" content="Marco Suarez">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="static/img/logo.png" type="image/png">
+
+  <!-- Estilos -->
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg,#ffdee9,#b5fffc);
+      text-align: center;
+      padding-bottom: 60px;
+    }
+    header {
+      padding: 20px;
+    }
+    img.logo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    h1 {
+      margin-top: 10px;
+      font-size: 32px;
+    }
+    section {
+      background: #fff;
+      width: 90%;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      text-align: left;
+    }
+    h2 { margin-top: 0; }
+    ul { padding-left: 18px; }
+
+    /* Botón flotante WhatsApp */
+    #contact-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    #contact-btn:hover {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
 <body>
-    <!-- Splash -->
-    <div id="splash">
-        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
-        <h1>Bienvenido a Rectificadora Suarez</h1>
-    </div>
+  <header>
+    <img src="static/img/logo.png" alt="Logo" class="logo" />
+    <h1>Rectificadora Suárez</h1>
+    <p>San Camilo — Calle Guatemala y Colombia (esquina)</p>
+    <p>Cel. 0999531090 | Telf. 05-2773915</p>
+  </header>
 
-    <!-- Galería -->
-    <div id="gallery" class="gallery"></div>
+  <section>
+    <h2>🔧 Servicio de Rectificado de Motores</h2>
+    <ul>
+      <li>Rectificado de cilindros</li>
+      <li>Planeado de culatas y bloques</li>
+      <li>Reparación de cigüeñales</li>
+      <li>Pruebas de presión y fugas</li>
+      <li>Ajustes y calibraciones especializadas</li>
+    </ul>
+  </section>
 
-    <!-- Botón flotante -->
-    <button id="chat-btn">💬</button>
+  <section>
+    <h2>👨‍🔧 Nuestro Personal</h2>
+    <p>Ing. Marco Suarez — Ingeniero de Taller</p>
+    <p>Sra. Laura Perez — Gerente General</p>
+    <p>Sr. Juan Torres — Técnico Especializado</p>
+  </section>
 
-    <script src="{{
+  <section>
+    <h2>📸 Galería</h2>
+    <p>Versión HTML básica — sin subida de imágenes (solo GitHub Pages).</p>
+  </section>
 
+  <section>
+    <h2>🚀 Innovaciones</h2>
+    <p>Últimas mejoras y procesos del taller.</p>
+  </section>
+
+  <section>
+    <h2>📰 Noticias</h2>
+    <p>Novedades del taller y anuncios importantes.</p>
+  </section>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/0999531090" target="_blank">
+    <button id="contact-btn">💬</button>
+  </a>
+
+</body>
+</html>
