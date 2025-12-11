@@ -1,5 +1,6 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from flask import Flask, render_template, jsonify
+import os  # <-- ¡IMPORTANTE! Añade esta línea
 
 app = Flask(__name__)
 
@@ -19,6 +20,7 @@ def home():
 def get_gallery():
     return jsonify(gallery_items)
 
+# --- BLOQUE CORREGIDO PARA PRODUCCIÓN (RENDER) ---
 if __name__ == '__main__':
-    app.run(debug=True, port=8001)
-
+    port = int(os.environ.get('PORT', 5000))  # Usa el puerto de Render o 5000 local
+    app.run(host='0.0.0.0', port=port)  # ¡Escucha en todas las interfaces!
