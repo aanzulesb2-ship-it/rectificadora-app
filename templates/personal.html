@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang='es'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Personal - Rectificadora Suarez</title>
+    <link rel='stylesheet' href='{{ url_for('static', filename='style.css') }}'>
+</head>
+<body>
+    <h1 style='text-align:center;'>Personal de Rectificadora Suarez</h1>
+
+    <!-- Fila 1: Ing., Gerente, Técnico -->
+    <div class='team-row'>
+        {% for person in persons[:3] %}
+        <div class='team-member'>
+            <img src='{{ url_for('static', filename=person.photo_path) }}' alt='{{ person.name }}'>
+            <h3>{{ person.name }}</h3>
+            <p>{{ person.role }}</p>
+            <div class='chat-bubble'>{{ person.bio }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Fila 2: Dos técnicos especializados -->
+    <div class='team-row'>
+        {% for person in persons[3:5] %}
+        <div class='team-member'>
+            <img src='{{ url_for('static', filename=person.photo_path) }}' alt='{{ person.name }}'>
+            <h3>{{ person.name }}</h3>
+            <p>{{ person.role }}</p>
+            <div class='chat-bubble'>{{ person.bio }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Fila 3: Foto grupal -->
+    <div class='group-photo'>
+        <img src='{{ url_for('static', filename='img/grupo.jpg') }}' alt='Foto grupal'>
+    </div>
+</body>
+</html>
