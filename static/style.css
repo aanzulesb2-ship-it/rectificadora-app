@@ -1,63 +1,110 @@
-﻿body {
+body {
     font-family: Arial, sans-serif;
+    text-align: center;
     margin: 0;
     padding: 0;
-    background: #f0f0f0;
 }
-header, footer {
-    text-align: center;
+
+header {
     padding: 20px;
-    background: #004080;
-    color: white;
+    background: #f5f5f5;
 }
-main {
-    padding: 20px;
+
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
 }
-section {
-    margin-bottom: 20px;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-}
-.team-row {
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    background: #333;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin: 0;
 }
-.team-member {
-    margin: 0 10px;
-    text-align: center;
-    width: 200px;
+
+nav ul li {
+    margin: 0 15px;
 }
-.team-member img {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-.group-photo img {
-    width: 90%;
-    height: 4.5cm;
-    object-fit: cover;
-    display: block;
-    margin: auto;
-    border-radius: 10px;
-}
-.chat-bubble {
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    padding: 10px;
-    margin-top: 5px;
-    background: #f0f0f0;
-}
-button {
-    padding: 10px 15px;
-    background-color: #004080;
+
+nav ul li a {
     color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section.staff, section.news {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+.card, .news-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    width: 220px;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+footer {
+    background: #333;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.horizontal-staff {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.chatbot-bubble {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.back-button {
+    background: #333;
+    color: white;
+    padding: 8px 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-button:hover {
-    background-color: #0066cc;
+    margin-bottom: 20px;
 }

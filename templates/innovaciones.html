@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innovaciones - Rectificadora Suárez</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+</header>
+
+<h1>Innovaciones y Noticias</h1>
+
+<button onclick="history.back()" class="back-button">⬅ Regresar</button>
+
+<section class="news">
+    {% for item in news %}
+    <div class="news-card">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+    </div>
+    {% endfor %}
+</section>
+
+<!-- Botón WhatsApp -->
+<a href="https://wa.me/593999531090" class="whatsapp-button" target="_blank">WhatsApp</a>
+
+<!-- Chatbot burbuja -->
+<div class="chatbot-bubble" onclick="openChat()">
+    💬 Chat
+</div>
+
+<script>
+function openChat() {
+    alert("Bienvenido al chat del GRUPO RECTIFICADORA SUÁREZ!");
+}
+</script>
+
+<footer>
+    <p>📍 Calle Guatemala y Colombia (esquina)</p>
+    <p>📞 0999531090 | ☎ 05-2773915</p>
+</footer>
+</body>
+</html>

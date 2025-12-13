@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto - Rectificadora Suárez</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+</header>
+
+<h1>Contacto</h1>
+
+<button onclick="history.back()" class="back-button">⬅ Regresar</button>
+
+<section class="contact">
+    <p>📍 Dirección: Calle Guatemala y Colombia (esquina)</p>
+    <p>📞 Teléfono: 0999531090 | ☎ 05-2773915</p>
+    <p>Email: contacto@rectificadora-suarez.com</p>
+</section>
+
+<section class="map">
+    <h2>Ubicación GPS</h2>
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.123456!2d-79.123456!3d-0.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z0JrQsNC80LXQvdC40YHRgtGA0L7Qs9C40YbQtdC90LjRjw!5e0!3m2!1ses!2sec!4v1699999999999"
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+</section>
+
+<!-- Botón WhatsApp -->
+<a href="https://wa.me/593999531090" class="whatsapp-button" target="_blank">WhatsApp</a>
+
+<!-- Chatbot burbuja -->
+<div class="chatbot-bubble" onclick="openChat()">
+    💬 Chat
+</div>
+
+<script>
+function openChat() {
+    alert("Bienvenido al chat del GRUPO RECTIFICADORA SUÁREZ!");
+}
+</script>
+
+<footer>
+    <p>© 2025 Rectificadora Suárez</p>
+</footer>
+</body>
+</html>
+ 

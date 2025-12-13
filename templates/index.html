@@ -1,24 +1,63 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Grupo Rectificadora Suarez</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rectificadora Suárez</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <header>
-        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Rectificadora" class="logo">
-        <h1>Bienvenido al Grupo Rectificadora Suarez</h1>
-    </header>
-    <main>
-        <section class="main-section">
-            <h2><a href="/personal">Ver Personal</a></h2>
-            <h2><a href="/innovaciones">Innovaciones y Noticias</a></h2>
-            <h2><a href="/contacto">Contacto y Ubicación</a></h2>
-        </section>
-    </main>
+<header>
+    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+    <h1>Rectificadora Suárez</h1>
+    <p>Rectificado profesional de motores en San Camilo</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="{{ url_for('show_personal_web') }}">Personal</a></li>
+        <li><a href="{{ url_for('show_innovations') }}">Innovaciones/Noticias</a></li>
+        <li><a href="{{ url_for('show_contact') }}">Contacto</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="services">
+        <h2>🔧 Servicios de Rectificado</h2>
+        <ul class="horizontal-staff">
+            {% for person in persons[:3] %}  <!-- Ing, Gerente, Técnico principal -->
+            <li>
+                <img src="{{ url_for('static', filename=person.photo_path) }}" alt="{{ person.name }}">
+                <h3>{{ person.name }}</h3>
+                <p>{{ person.role }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="invitation">
+        <h2>📣 Únete y aprende más sobre el GRUPO RECTIFICADORA SUÁREZ</h2>
+        <p>Estamos en búsqueda de pasantes interesados en mecánica y electromecánica.</p>
+    </section>
+</main>
+
+<!-- Botón WhatsApp -->
+<a href="https://wa.me/593999531090" class="whatsapp-button" target="_blank">WhatsApp</a>
+
+<!-- Chatbot burbuja -->
+<div class="chatbot-bubble" onclick="openChat()">
+    💬 Chat
+</div>
+
+<script>
+function openChat() {
+    alert("Bienvenido al chat del GRUPO RECTIFICADORA SUÁREZ!");
+}
+</script>
+
+<footer>
+    <p>📍 Calle Guatemala y Colombia (esquina)</p>
+    <p>📞 0999531090 | ☎ 05-2773915</p>
+</footer>
 </body>
 </html>
-
-
-

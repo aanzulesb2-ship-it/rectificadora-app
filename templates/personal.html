@@ -1,40 +1,81 @@
 ﻿<!DOCTYPE html>
-<html lang='es'>
+<html lang="es">
 <head>
-    <meta charset='UTF-8'>
-    <title>Personal - Rectificadora Suarez</title>
-    <link rel='stylesheet' href='{{ url_for('static', filename='style.css') }}'>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal - Rectificadora Suárez</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1 style='text-align:center;'>Personal de Rectificadora Suarez</h1>
+<header>
+    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+</header>
 
-    <!-- Fila 1: Ing., Gerente, Técnico -->
-    <div class='team-row'>
+<h1>Personal</h1>
+
+<button onclick="history.back()" class="back-button">⬅ Regresar</button>
+
+<section class="staff-category">
+    <h2>Ingeniero / Gerente / Técnico Especializado</h2>
+    <div class="staff horizontal-staff">
         {% for person in persons[:3] %}
-        <div class='team-member'>
-            <img src='{{ url_for('static', filename=person.photo_path) }}' alt='{{ person.name }}'>
+        <div class="card">
+            <img src="{{ url_for('static', filename=person.photo_path) }}" alt="{{ person.name }}">
             <h3>{{ person.name }}</h3>
             <p>{{ person.role }}</p>
-            <div class='chat-bubble'>{{ person.bio }}</div>
+            <p>{{ person.bio }}</p>
         </div>
         {% endfor %}
     </div>
+</section>
 
-    <!-- Fila 2: Dos técnicos especializados -->
-    <div class='team-row'>
+<section class="staff-category">
+    <h2>Otros Técnicos Especializados</h2>
+    <div class="staff horizontal-staff">
         {% for person in persons[3:5] %}
-        <div class='team-member'>
-            <img src='{{ url_for('static', filename=person.photo_path) }}' alt='{{ person.name }}'>
+        <div class="card">
+            <img src="{{ url_for('static', filename=person.photo_path) }}" alt="{{ person.name }}">
             <h3>{{ person.name }}</h3>
             <p>{{ person.role }}</p>
-            <div class='chat-bubble'>{{ person.bio }}</div>
+            <p>{{ person.bio }}</p>
         </div>
         {% endfor %}
     </div>
+</section>
 
-    <!-- Fila 3: Foto grupal -->
-    <div class='group-photo'>
-        <img src='{{ url_for('static', filename='img/grupo.jpg') }}' alt='Foto grupal'>
+<section class="staff-category">
+    <h2>Pasantes</h2>
+    <div class="staff horizontal-staff">
+        {% for person in persons[5:] %}
+        <div class="card">
+            <img src="{{ url_for('static', filename=person.photo_path) }}" alt="{{ person.name }}">
+            <h3>{{ person.name }}</h3>
+            <p>{{ person.role }}</p>
+            <p>{{ person.bio }}</p>
+            <p><em>{{ person.career }}</em></p>
+        </div>
+        {% endfor %}
     </div>
+</section>
+
+<!-- Botón WhatsApp -->
+<a href="https://wa.me/593999531090" class="whatsapp-button" target="_blank">WhatsApp</a>
+
+<!-- Chatbot burbuja -->
+<div class="chatbot-bubble" onclick="openChat()">
+    💬 Chat
+</div>
+
+<script>
+function openChat() {
+    alert("Bienvenido al chat del GRUPO RECTIFICADORA SUÁREZ!");
+}
+</script>
+
+<footer>
+    <p>📍 Calle Guatemala y Colombia (esquina)</p>
+    <p>📞 0999531090 | ☎ 05-2773915</p>
+</footer>
 </body>
 </html>
+
