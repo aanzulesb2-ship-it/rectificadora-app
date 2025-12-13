@@ -68,4 +68,8 @@ app.news.extend([
 # ------------------------ Servidor ------------------------
 if __name__ == '__main__':
     from waitress import serve
-    serve(flask_app, host="0.0.0.0", port=5000)
+    serve(flask_app, host="0.0.0.0", port=8000)
+import webbrowser
+webbrowser.open("http://127.0.0.1:8000")
+
+
