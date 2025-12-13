@@ -1,13 +1,36 @@
-﻿<script>
-function showInfo(name, role, bio, photo) {
-    document.getElementById('info-name').innerText = name;
-    document.getElementById('info-role').innerText = role;
-    document.getElementById('info-bio').innerText = bio;
-    document.getElementById('info-photo').src = photo;
-    document.getElementById('person-info').style.display = 'block';
-}
+﻿<!DOCTYPE html>
+<html lang='es'>
+<head>
+<meta charset='UTF-8'>
+<title>Rectificadora Suarez</title>
+<link rel='stylesheet' href='/static/style.css'>
+</head>
+<body>
+<header>
+<img src='/static/img/logo.png' class='logo'>
+<nav>
+<ul>
+<li><a href='/'>Inicio</a></li>
+<li><a href='/personal'>Personal</a></li>
+<li><a href='/innovaciones'>Innovaciones</a></li>
+<li><a href='/contacto'>Contacto</a></li>
+</ul>
+</nav>
+</header>
 
-function closeInfo() {
-    document.getElementById('person-info').style.display = 'none';
-}
-</script>
+<h1>Personal Principal</h1>
+<div class='horizontal-staff'>
+{% for p in principales %}
+<div class='card'>
+<img src='/static/{{p.photo_path}}' alt='{{p.name}}'>
+<h3>{{p.name}}</h3>
+<p>{{p.role}}</p>
+</div>
+{% endfor %}
+</div>
+
+<a href='https://wa.me/1234567890' class='whatsapp-button'>WhatsApp</a>
+<div class='chatbot-bubble'>Chat</div>
+
+</body>
+</html>

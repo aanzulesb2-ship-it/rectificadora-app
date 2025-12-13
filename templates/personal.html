@@ -1,81 +1,95 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Personal - Rectificadora Suárez</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Personal - Rectificadora Suarez</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .tabs button {
+            background: #111;
+            color: #00ffea;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .tabs button.active {
+            background: #00ffea;
+            color: #111;
+        }
+        .section-content {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .section-content.active {
+            display: flex;
+        }
+    </style>
 </head>
 <body>
 <header>
-    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+    <img src="{{ url_for('static', filename='img/logo.png') }}" class="logo" alt="Logo">
+    <nav>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/personal">Personal</a></li>
+            <li><a href="/innovaciones">Innovaciones</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
 </header>
 
-<h1>Personal</h1>
+<div class="tabs">
+    <button class="tab-button active" onclick="showSection('tecnicos')">Técnicos</button>
+    <button class="tab-button" onclick="showSection('pasantes')">Pasantes</button>
+</div>
 
-<button onclick="history.back()" class="back-button">⬅ Regresar</button>
-
-<section class="staff-category">
-    <h2>Ingeniero / Gerente / Técnico Especializado</h2>
-    <div class="staff horizontal-staff">
-        {% for person in persons[:3] %}
-        <div class="card">
-            <img src="{{ url_for('static', filename=person.photo_path) }}" alt="{{ person.name }}">
-            <h3>{{ person.name }}</h3>
-            <p>{{ person.role }}</p>
-            <p>{{ person.bio }}</p>
-        </div>
-        {% endfor %}
+<div id="tecnicos" class="section-content active">
+    {% for t in tecnicos %}
+    <div class="card">
+        <img src="{{ url_for('static', filename=t.photo_path) }}" alt="{{ t.name }}">
+        <h3>{{ t.name }}</h3>
+        <p>{{ t.role }}</p>
+        <p>{{ t.info_tecnica if t.info_tecnica else '' }}</p>
     </div>
-</section>
+    {% endfor %}
+</div>
 
-<section class="staff-category">
-    <h2>Otros Técnicos Especializados</h2>
-    <div class="staff horizontal-staff">
-        {% for person in persons[3:5] %}
-        <div class="card">
-            <img src="{{ url_for('static', filename=person.photo_path) }}" alt="{{ person.name }}">
-            <h3>{{ person.name }}</h3>
-            <p>{{ person.role }}</p>
-            <p>{{ person.bio }}</p>
-        </div>
-        {% endfor %}
+<div id="pasantes" class="section-content">
+    {% for p in pasantes %}
+    <div class="card">
+        <img src="{{ url_for('static', filename=p.photo_path) }}" alt="{{ p.name }}">
+        <h3>{{ p.name }}</h3>
+        <p>{{ p.role }}</p>
+        <p>{{ p.career if p.career else '' }}</p>
     </div>
-</section>
-
-<section class="staff-category">
-    <h2>Pasantes</h2>
-    <div class="staff horizontal-staff">
-        {% for person in persons[5:] %}
-        <div class="card">
-            <img src="{{ url_for('static', filename=person.photo_path) }}" alt="{{ person.name }}">
-            <h3>{{ person.name }}</h3>
-            <p>{{ person.role }}</p>
-            <p>{{ person.bio }}</p>
-            <p><em>{{ person.career }}</em></p>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-
-<!-- Botón WhatsApp -->
-<a href="https://wa.me/593999531090" class="whatsapp-button" target="_blank">WhatsApp</a>
-
-<!-- Chatbot burbuja -->
-<div class="chatbot-bubble" onclick="openChat()">
-    💬 Chat
+    {% endfor %}
 </div>
 
 <script>
-function openChat() {
-    alert("Bienvenido al chat del GRUPO RECTIFICADORA SUÁREZ!");
-}
+    function showSection(id) {
+        document.querySelectorAll('.section-content').forEach(sec => sec.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+    }
+
+    // Abrir automáticamente Técnicos al cargar
+    window.onload = () => showSection('tecnicos');
 </script>
 
-<footer>
-    <p>📍 Calle Guatemala y Colombia (esquina)</p>
-    <p>📞 0999531090 | ☎ 05-2773915</p>
-</footer>
+<a class="whatsapp-button" href="https://wa.me/1234567890" target="_blank">WhatsApp</a>
+<div class="chatbot-bubble">Chat</div>
 </body>
 </html>
-
