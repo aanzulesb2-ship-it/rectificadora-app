@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Genes/RectificadoraApp/pages/index.tsx"],"sourcesContent":["import React from 'react';\n\nconst Home = () => {\n    return (\n        <div style={{ textAlign: 'center', marginTop: '50px' }}>\n            <h1>Bienvenido a Rectificadora App</h1>\n            <p>Tu sitio Next.js está listo para desarrollo.</p>\n        </div>\n    );\n};\n\nexport default Home;\r\n"],"names":[],"mappings":";;;;;;AAEA,MAAM,OAAO;IACT,qBACI,qKAAC;QAAI,OAAO;YAAE,WAAW;YAAU,WAAW;QAAO;;0BACjD,qKAAC;0BAAG;;;;;;0BACJ,qKAAC;0BAAE;;;;;;;;;;;;AAGf;uCAEe"}}]
+}
