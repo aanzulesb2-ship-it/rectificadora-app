@@ -76,4 +76,6 @@ git push -u origin main --force
 Write-Host "Repositorio sincronizado con GitHub" -ForegroundColor Green
 
 # ABRIR ARCHIVOS Y WEB
-Start-Pr
+Start-Process index.html
+Start-Process $publicUrl
+Start-Process $repoUrl
