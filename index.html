@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>ERP Rectificadora Suarez</title>
+<style>
+body { font-family: Arial; margin: 30px; }
+table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+th, td { border: 1px solid #ccc; padding: 8px; }
+th { background: #eee; }
+button { padding: 6px 10px; cursor: pointer; }
+</style>
 </head>
 <body>
 
@@ -14,29 +21,60 @@
 <button type="submit">Guardar</button>
 </form>
 
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Cliente</th>
+<th>Trabajo</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody id="tabla"></tbody>
+</table>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
 const SUPABASE_URL = "https://igjaxobidxuiuokotmgx.supabase.co";
 const SUPABASE_KEY = "sb_publishable_mhmF6Re7HzkkQw-koUJ2bA_ThNnAfcW";
-
 const supabase = supabaseJs.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-document.getElementById("form").addEventListener("submit", async e => {
-    e.preventDefault();
-    const cliente = document.getElementById("cliente").value;
-    const trabajo = document.getElementById("trabajo").value;
+const tabla = document.getElementById("tabla");
+const form = document.getElementById("form");
 
-    const { error } = await supabase
-        .from("trabajos")
-        .insert([{ cliente, trabajo }]);
+async function cargar() {
+  const { data, error } = await supabase.from("trabajos").select("*").order("id", { ascending: false });
+  tabla.innerHTML = "";
+  data.forEach(r => {
+    tabla.innerHTML += 
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button onclick="eliminar()">Eliminar</button></td>
+      </tr>;
+  });
+}
 
-    if (error) {
-        alert("Error al guardar");
-    } else {
-        alert("Guardado correctamente");
-        e.target.reset();
-    }
+async function eliminar(id) {
+  if (!confirm("¿Eliminar registro?")) return;
+  await supabase.from("trabajos").delete().eq("id", id);
+  cargar();
+}
+
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const cliente = clienteInput.value;
+  const trabajo = trabajoInput.value;
+  await supabase.from("trabajos").insert([{ cliente, trabajo }]);
+  form.reset();
+  cargar();
 });
+
+const clienteInput = document.getElementById("cliente");
+const trabajoInput = document.getElementById("trabajo");
+
+cargar();
 </script>
 
 </body>
