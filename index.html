@@ -4,58 +4,60 @@
 <meta charset="UTF-8">
 <title>ERP Rectificadora Suarez</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
-<body class="bg-gray-100 p-6">
+<body class="bg-gray-100">
 
-<h1 class="text-3xl font-black mb-6">ERP Rectificadora Suarez</h1>
-
-<div class="bg-white p-4 rounded shadow mb-4">
-<input id="cliente" placeholder="Cliente / Motor" class="border p-2 w-full mb-2">
-<button onclick="guardar()" class="bg-black text-white px-4 py-2 rounded">Guardar Orden</button>
+<div id="login" class="min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-xl shadow w-96">
+    <h1 class="text-2xl font-bold mb-6 text-center">ERP Rectificadora Suarez</h1>
+    <input id="email" type="email" placeholder="Email" class="w-full mb-3 p-3 border rounded">
+    <input id="password" type="password" placeholder="Contraseña" class="w-full mb-4 p-3 border rounded">
+    <button onclick="login()" class="w-full bg-black text-white p-3 rounded">Ingresar</button>
+    <p id="error" class="text-red-600 text-sm mt-3 text-center"></p>
+  </div>
 </div>
 
-<div id="lista" class="space-y-2"></div>
+<div id="app" class="hidden p-8">
+  <div class="flex justify-between mb-6">
+    <h2 class="text-xl font-bold">Panel ERP</h2>
+    <button onclick="logout()" class="text-red-600 font-bold">Salir</button>
+  </div>
+
+  <input id="client" placeholder="Cliente / Motor" class="border p-3 rounded w-96">
+  <button onclick="save()" class="bg-green-600 text-white px-4 py-3 rounded ml-2">Guardar Orden</button>
+
+  <ul id="list" class="mt-6 space-y-2"></ul>
+</div>
 
 <script>
-const supabase = supabaseJs.createClient(
-  "https://igjaxobidxuiuokotmgx.supabase.co",
-  "sb_publishable_mhmF6Re7HzkkQw-koUJ2bA_ThNnAfcW"
-);
+const supabase = supabaseJs.createClient("https://igjaxobidxuiuokotmgx.supabase.co","PEGA_AQUI_TU_PUBLISHABLE_KEY");
 
-async function cargar() {
-  const { data } = await supabase
-    .from("orders")
-    .select("*")
-    .order("created_at", { ascending: true });
-
-  const lista = document.getElementById("lista");
-  lista.innerHTML = "";
-
-  data.forEach(o => {
-    lista.innerHTML += 
-      <div class="bg-white p-3 rounded shadow flex justify-between">
-        <span>\</span>
-        <span class="text-xs text-gray-400">\</span>
-      </div>
-    ;
-  });
+async function login(){
+  const email = email.value;
+  const password = password.value;
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  if(error) document.getElementById("error").innerText = error.message;
 }
 
-async function guardar() {
-  const cliente = document.getElementById("cliente").value;
-  if (!cliente) return;
-
-  await supabase.from("orders").insert({
-    client: cliente,
-    status: "pendiente"
-  });
-
-  document.getElementById("cliente").value = "";
-  cargar();
+async function logout(){
+  await supabase.auth.signOut();
+  location.reload();
 }
 
-cargar();
+async function save(){
+  const li = document.createElement("li");
+  li.innerText = client.value;
+  list.appendChild(li);
+  client.value = "";
+}
+
+supabase.auth.onAuthStateChange((_event, session)=>{
+  if(session){
+    login.classList.add("hidden");
+    app.classList.remove("hidden");
+  }
+});
 </script>
 
 </body>
