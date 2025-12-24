@@ -2,102 +2,16 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>ERP Rectificadora Suarez</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERP Rectificadora Suarez | Taller Mecánico</title>
+<meta name="description" content="ERP profesional para rectificadoras. Gestión de órdenes, control FIFO y seguimiento técnico.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://aanzulesb2-ship-it.github.io/rectificadora-app/">
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-body{background:#f0f2f5;font-family:Inter,sans-serif}
-.page-section{display:none}
-.page-section.active{display:block}
-.order-pending{border-left:10px solid #fbbf24}
-.order-done{border-left:10px solid #10b981;opacity:.85}
-</style>
 </head>
-<body>
-
-<div id="login" class="fixed inset-0 bg-black flex items-center justify-center">
-<div class="bg-white p-8 rounded-xl w-80">
-<h2 class="text-2xl font-black text-center mb-6">SUAREZ ERP</h2>
-<input id="u" placeholder="Usuario" class="w-full p-3 border mb-3">
-<input id="p" type="password" placeholder="Contraseña" class="w-full p-3 border mb-4">
-<button onclick="auth()" class="w-full bg-red-600 text-white p-3 font-black">ENTRAR</button>
-</div>
-</div>
-
-<header class="bg-black text-white p-4">
-<button onclick="show('inicio')">Inicio</button>
-<button onclick="show('taller')">Taller</button>
-</header>
-
-<main class="p-4">
-
-<section id="inicio" class="page-section active">
-<h1 class="text-2xl font-black">Panel General</h1>
-<p>Pendientes: <span id="pend">0</span> | Realizados: <span id="done">0</span></p>
-</section>
-
-<section id="taller" class="page-section">
-<input id="search" onkeyup="render()" placeholder="Buscar..." class="p-3 border w-full mb-3">
-<button onclick="openM()" class="bg-black text-white p-3 mb-3">+ Nueva Orden</button>
-<div id="list"></div>
-</section>
-
-</main>
-
-<div id="modal" class="fixed inset-0 bg-black/60 hidden items-center justify-center">
-<div class="bg-white p-6 rounded w-80">
-<input id="name" placeholder="Cliente / Motor" class="p-3 border w-full mb-3">
-<button onclick="save()" class="bg-red-600 text-white p-3 w-full">Guardar</button>
-</div>
-</div>
-
-<script>
-let db = JSON.parse(localStorage.getItem('db')) || [];
-
-function auth(){
- if(u.value=="admin" && p.value=="suarez"){
-  login.style.display="none"; render();
- } else alert("Acceso denegado");
-}
-
-function show(id){
- document.querySelectorAll('.page-section').forEach(x=>x.classList.remove('active'));
- document.getElementById(id).classList.add('active');
-}
-
-function openM(){ modal.classList.remove('hidden'); modal.classList.add('flex'); }
-function save(){
- if(!name.value) return;
- db.push({id:Date.now(),c:name.value,s:'pendiente'});
- localStorage.setItem('db',JSON.stringify(db));
- name.value=''; modal.classList.add('hidden'); render();
-}
-
-function toggle(id){
- let o=db.find(x=>x.id==id);
- o.s=o.s=='pendiente'?'realizado':'pendiente';
- localStorage.setItem('db',JSON.stringify(db));
- render();
-}
-
-function render(){
- list.innerHTML='';
- let p=0,d=0;
- db.forEach(o=>{
-  if(!o.c.toLowerCase().includes(search.value.toLowerCase())) return;
-  o.s=='pendiente'?p++:d++;
-  list.innerHTML+=\
-  <div class="bg-white p-3 mb-2 \">
-   <b>\</b>
-   <button onclick="toggle(\)" class="float-right bg-black text-white px-3">
-    \
-   </button>
-  </div>\;
- });
- pend.innerText=p; done.innerText=d;
-}
-</script>
-
+<body class="bg-gray-100 p-10">
+<h1 class="text-3xl font-black">ERP Rectificadora Suarez</h1>
+<p class="mt-2">Sistema desplegado automáticamente con PowerShell.</p>
+<p class="mt-4 font-bold">Usuario: admin | Clave: suarez</p>
 </body>
 </html>
